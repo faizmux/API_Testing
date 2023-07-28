@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Testing Qtrip API">
+    <test name="Test Execution using TestNg" verbose="2">
+    <groups>
+            <run>
+              <include name = "API_Tests"></include>
+            </run>
+        </groups>
+        <packages>
+            <package name="APITests"></package>
+        </packages>
+     </test> <!-- Test -->
+</suite> <!-- Suite -->
