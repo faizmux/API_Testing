@@ -20,13 +20,14 @@ public class testCase_API_01 {
 
     private String email;
 
-    @BeforeClass
+    // @BeforeClass
     public void init() {
         RestAssured.baseURI = "https://content-qtripdynamic-qa-backend.azurewebsites.net/";
     }
 
     @Test(groups = {"API_Tests"}, priority = 1)
-    public void register() {
+    public void TestCase_01() {
+        RestAssured.baseURI = "https://content-qtripdynamic-qa-backend.azurewebsites.net/";
         RestAssured.basePath = "api/v1/register";
 
         JSONObject obj = new JSONObject();
@@ -49,7 +50,30 @@ public class testCase_API_01 {
         Assert.assertTrue(res.jsonPath().getBoolean("success"));
 
         this.email = email;
+
+        RestAssured.basePath = "api/v1/login";
+
+        JSONObject obj2 = new JSONObject();
+        String email2 = this.email;
+        String password2 = "Faiz7786";
+
+        obj2.put("email", email2);
+        obj2.put("password", password2);
+
+        RequestSpecification http = RestAssured.given().log().all()
+                .header("Content-Type", "application/json").body(obj.toString());
+
+        Response res2 = http.when().post().then().log().all().assertThat().statusCode(201).extract()
+                .response();
+
+        Assert.assertEquals(res2.getStatusCode(), 201);
+        Assert.assertTrue(res2.jsonPath().getBoolean("success"));
+
+        Assert.assertNotNull(res2.jsonPath().getString("data.token"));
+        Assert.assertNotNull(res2.jsonPath().getString("data.id"));
     }
+
+    /* 
 
     @Test(dependsOnMethods = {"register"})
     public void login() {
@@ -75,4 +99,6 @@ public class testCase_API_01 {
         Assert.assertNotNull(res.jsonPath().getString("data.id"));
 
     }
+
+    */
 }

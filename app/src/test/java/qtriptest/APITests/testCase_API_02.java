@@ -21,14 +21,14 @@ import java.util.UUID;
 
 public class testCase_API_02 {
 
-    @BeforeClass
+    // @BeforeClass
     public void init() {
-        RestAssured.baseURI = "https://content-qtripdynamic-qa-backend.azurewebsites.net/";
-        RestAssured.basePath = "api/v1/cities";
     }
-
+    
     @Test(groups = {"API_Tests"}, priority = 2)
     public void TestCase_02() {
+        RestAssured.baseURI = "https://content-qtripdynamic-qa-backend.azurewebsites.net/";
+        RestAssured.basePath = "api/v1/cities";
         // Response res = RestAssured.given().log().all().queryParam("q", "beng").when().get()
         //         .then().log().all().extract().response();
         // JSONArray arr = new JSONArray(res.body().asString());

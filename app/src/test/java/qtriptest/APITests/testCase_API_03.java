@@ -20,7 +20,7 @@ import java.util.UUID;
 public class testCase_API_03 {
     private String email;
 
-    @BeforeClass
+    // @BeforeClass
     public void init() {
         RestAssured.baseURI = "https://content-qtripdynamic-qa-backend.azurewebsites.net/";
     }

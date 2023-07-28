@@ -17,7 +17,7 @@ import qtriptest.pages.RegisterPage;
 public class testCase_01 {
     static RemoteWebDriver driver;
 
-    @BeforeTest()
+    // @BeforeTest()
     public static void createDriver()  throws MalformedURLException {
         // IMPORTANT!: Enter the Driver Location here
         DriverSingleton sbc1= DriverSingleton.getInstanceOfSingletonBrowserClass();
@@ -46,7 +46,7 @@ public class testCase_01 {
         home.gotoHomePage();
     }
 
-    @AfterSuite
+    // @AfterSuite
     public static void quitDriver() throws InterruptedException
     {
         driver.quit();
